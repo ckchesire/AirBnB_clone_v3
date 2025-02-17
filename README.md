@@ -8,6 +8,13 @@ The console is the first segment of the AirBnB project at Holberton School that 
 * Update attributes of an object
 * Destroy an object
 
+
+### REST API Overview
+
+A **REST API (Representational State Transfer API)** is a web-based interface that allows clients to interact with a server using standard HTTP methods such as **GET, POST, PUT, PATCH, and DELETE**. It follows a stateless, client-server architecture where resources are identified by URLs and manipulated through requests. REST APIs commonly use JSON for data exchange and support CRUD operations (Create, Read, Update, Delete) efficiently. Security features like **CORS (Cross-Origin Resource Sharing)** control access across different domains, ensuring secure interactions.
+
+Other types of APIs include **SOAP (Simple Object Access Protocol)** for structured XML messaging, **GraphQL** for precise data querying, **gRPC** for high-performance communication, and **WebSockets** for real-time interactions. Developers can request a REST API using tools like **cURL, Postman, JavaScript Fetch API, or Python's Requests library** to retrieve or manipulate data. Proper API design, authentication, and versioning are essential for building scalable and maintainable RESTful services.
+
 ## Table of Content
 * [Environment](#environment)
 * [Installation](#installation)
