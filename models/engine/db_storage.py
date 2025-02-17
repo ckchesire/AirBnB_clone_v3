@@ -77,13 +77,38 @@ class DBStorage:
 
     def get(self, cls, id):
         """Method to retrieve an object filtered by class and id
+
+           Args:
+             cls(str) - Class name of an object
+             id(str) - Id representing an object class
+            
+           Return:
+             returns the object value or none
         """
-	if cls and id:
-	    if cls in classes.values() and isinstance(id, str):
-	        all_objs = self.all(cls)
-		for k, v in all_objs.items():
-		    if k.split('.')[1] == id:
-		        return v
-	    else:
-	        return
-	return
+        if cls and id:
+            if cls in classes.values() and isinstance(id, str):
+                all_objs = self.all(cls)
+                for k, v in all_objs.items():
+                    if k.split('.')[1] == id:
+                        return v
+            else:
+                return
+        return
+    
+    def count(self, cls=None):
+        """Method to count the number of objects in storage
+
+           Args: 
+             cls(str) - Class name to count
+
+           Return:
+             returns the count for all class instances or particular class
+        """
+        if not cls:
+            cls_instances = self.all()
+            return len(cls_instances)
+        if cls in classes.values():
+            filtered_instances = self.all(cls)
+            return len(filtered_instances)
+        if cls not in classes.values():
+            return
