@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 """Module to create a new Flask app
+   
+   It initializes the Flask application, registers blueprints for
+   route organization, sets up environment-specific configurations, and
+   provides an entry point for running the application. It serves as the
+   main application file that ties together all components of the API.
 """
 import os
 from flask import Flask
