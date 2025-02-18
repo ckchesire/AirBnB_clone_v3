@@ -83,7 +83,7 @@ class TestDBStorage(unittest.TestCase):
         models.storage.new(created_state)
         models.storage.save()
 
-        session = models.storage._DBStorage.__session
+        session = models.storage.DBStorage.__session
         all_objs = session.query(State).all()
 
         self.assertTrue(len(all_objs) > 0)
@@ -93,9 +93,9 @@ class TestDBStorage(unittest.TestCase):
         """test that new adds an object to the database"""
         state_data = {"name": "Chicago"}
         cr_state = State(**state_data)
-        model.storage.new(cr_state)
+        models.storage.new(cr_state)
 
-        session = models.storage._DBStorage.__session
+        session = models.storage.DBStorage.__session
         filter_state = session.query(State).filter_by(id=cr_state.id).first()
 
         self.assertEqual(filter_state.id, cr_state.id)
@@ -107,10 +107,10 @@ class TestDBStorage(unittest.TestCase):
         """Test that save properly saves objects to file.json"""
         state_data = {"name": "New Mexico"}
         cr_state = State(**state_data)
-        model.storage.new(cr_state)
+        models.storage.new(cr_state)
         models.storage.save()
 
-        session = models.storage._DBStorage.__session
+        session = models.storage.__DBStorage.__session
         filtered_state = session.query(State).filter_by(id=cr_state.id).first()
 
         self.assertEqual(filtered_state.id, cr_state.id)
