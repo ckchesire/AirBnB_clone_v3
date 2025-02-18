@@ -70,13 +70,13 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
-        """Method to retrieve an object from the file storage using class and 
+        """Method to retrieve an object from the file storage using class and
            id as search parameters
 
            Args:
              cls(str) - Class name of an object
              id(str) - Id representing an object class
-            
+
            Return:
              returns the object value or none
         """

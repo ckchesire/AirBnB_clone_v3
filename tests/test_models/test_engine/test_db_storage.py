@@ -92,31 +92,31 @@ class TestDBStorage(unittest.TestCase):
     def test_new(self):
         """test that new adds an object to the database"""
         state_data = {"name": "Chicago"}
-        created_state = State(**state_data)
-        model.storage.new(created_state)
+        cr_state = State(**state_data)
+        model.storage.new(cr_state)
 
         session = models.storage._DBStorage.__session
-        filter_state = session.query(State).filter_by(id=created_state.id).first()
+        filter_state = session.query(State).filter_by(id=cr_state.id).first()
 
-        self.assertEqual(filter_state.id, created_state.id)
-        self.assertEqual(filter_state.name, created_state.name)
+        self.assertEqual(filter_state.id, cr_state.id)
+        self.assertEqual(filter_state.name, cr_state.name)
         self.assertIsNotNone(filter_state)
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
         state_data = {"name": "New Mexico"}
-        created_state = State(**state_data)
-        model.storage.new(created_state)
+        cr_state = State(**state_data)
+        model.storage.new(cr_state)
         models.storage.save()
 
         session = models.storage._DBStorage.__session
-        filtered_state = session.query(State).filter_by(id=created_state.id).first()
+        filtered_state = session.query(State).filter_by(id=cr_state.id).first()
 
-        self.assertEqual(filtered_state.id, created_state.id)
-        self.assertEqual(filtered_state.name, created_state.name)
+        self.assertEqual(filtered_state.id, cr_state.id)
+        self.assertEqual(filtered_state.name, cr_state.name)
         self.assertIsNotNone(filtered_state)
-    
+
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get(self):
         """Tests method for obtaining an instance for the database storage
@@ -129,7 +129,7 @@ class TestDBStorage(unittest.TestCase):
         self.assertEqual(created_state, retrieve_state)
         inexistent_state_id = storage.get(State, 'inexistent_id')
         self.assertEqual(inexistent_id, None)
-    
+
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         """Tests method for obtaining a count of an instance from db storage

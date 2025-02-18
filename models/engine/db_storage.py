@@ -81,7 +81,7 @@ class DBStorage:
            Args:
              cls(str) - Class name of an object
              id(str) - Id representing an object class
-            
+
            Return:
              returns the object value or none
         """
@@ -94,11 +94,11 @@ class DBStorage:
             else:
                 return
         return
-    
+
     def count(self, cls=None):
         """Method to count the number of objects in storage
 
-           Args: 
+           Args:
              cls(str) - Class name to count
 
            Return:
