@@ -12,7 +12,7 @@ from flask import jsonify
 @app_views.route('/status')
 def api_status():
     """Method creates a JSON payload when called, that returns the API status
-    
+
        Example:
          $ curl -X GET http://localhost:5000/api/v1/status
     """
